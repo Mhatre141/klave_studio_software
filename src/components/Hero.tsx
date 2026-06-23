@@ -211,6 +211,58 @@ export default function Hero() {
         {/* Cinematic Vignette Overlay */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_20%,#0a0a0c_85%)] z-15" />
 
+        {/* Mobile-Only Premium Telemetry HUD (Fills empty space above and below the landscape canvas animation) */}
+        <div className="absolute inset-0 pointer-events-none z-15 block sm:hidden select-none">
+          {/* Top HUD Panel */}
+          <div className="absolute top-[84px] left-6 right-6 flex justify-between items-start font-mono text-[9px] text-gray-500 tracking-widest leading-relaxed">
+            <div className="flex flex-col gap-1 border-l border-brand-amber/20 pl-2">
+              <span className="text-brand-amber font-semibold">SYS.STATUS: ACTIVE</span>
+              <span>OS: KLAVE_CORE_v2.0.8</span>
+              <span>RENDER: LOW_GRAVITY_CANVAS</span>
+            </div>
+            <div className="flex flex-col gap-1 text-right border-r border-brand-amber/20 pr-2">
+              <span>ACTIVE_NODES: 128/128</span>
+              <span>SYNC_INDEX: SYNCED</span>
+              <span>LATENCY: 12MS</span>
+            </div>
+          </div>
+
+          {/* Top Decorative Framing Brackets */}
+          <div className="absolute top-[76px] left-4 w-3.5 h-3.5 border-t border-l border-brand-amber/35" />
+          <div className="absolute top-[76px] right-4 w-3.5 h-3.5 border-t border-r border-brand-amber/35" />
+
+          {/* Side Virtual Alignment Crosshairs / Guide Rails */}
+          <div className="absolute top-1/4 -translate-y-1/2 left-4 h-16 w-[1px] bg-gradient-to-b from-transparent via-brand-amber/30 to-transparent" />
+          <div className="absolute top-1/4 -translate-y-1/2 right-4 h-16 w-[1px] bg-gradient-to-b from-transparent via-brand-amber/30 to-transparent" />
+          
+          <div className="absolute bottom-1/4 translate-y-1/2 left-4 h-16 w-[1px] bg-gradient-to-b from-transparent via-brand-amber/30 to-transparent" />
+          <div className="absolute bottom-1/4 translate-y-1/2 right-4 h-16 w-[1px] bg-gradient-to-b from-transparent via-brand-amber/30 to-transparent" />
+
+          {/* Bottom HUD Panel */}
+          <div className="absolute bottom-28 left-6 right-6 flex flex-col gap-2 font-mono text-[9px] text-gray-500 tracking-wider">
+            <div className="flex justify-between items-center w-full opacity-35">
+              <span>[ REGION: GLOBAL_MESH ]</span>
+              <span className="w-1/3 h-[1px] bg-gradient-to-r from-transparent via-brand-amber/20 to-transparent" />
+              <span>[ INSTANCE: COMPILER ]</span>
+            </div>
+            
+            <div className="flex justify-between items-end mt-1 border-t border-white/5 pt-2">
+              <div className="flex flex-col gap-0.5 border-l border-white/10 pl-2">
+                <span>COORD_X: 47.6062</span>
+                <span>COORD_Y: -122.3321</span>
+              </div>
+              <div className="flex flex-col gap-0.5 text-right border-r border-white/10 pr-2">
+                <span>EST_BUILD_CACHE: 100%</span>
+                <span>SIGNATURE: COMPILER_OK</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Decorative Framing Brackets */}
+          <div className="absolute bottom-[92px] left-4 w-3.5 h-3.5 border-b border-l border-brand-amber/35" />
+          <div className="absolute bottom-[92px] right-4 w-3.5 h-3.5 border-b border-r border-brand-amber/35" />
+        </div>
+
         {/* Scrolling Overlay Content */}
         <div ref={contentRef} className="relative z-20 w-full max-w-7xl px-6 md:px-12 flex flex-col items-center text-center">
           

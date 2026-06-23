@@ -24,7 +24,16 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission delay
+
+    const subject = `Client Inquiry - ${formState.name} (${formState.company || "No Company"})`;
+    const body = `Hello Klave Studio,\n\nI would like to submit a project inquiry:\n\nName: ${formState.name}\nEmail: ${formState.email}\nCompany: ${formState.company || "N/A"}\nService Needed: ${formState.service}\n\nProject Brief:\n${formState.message}\n\nBest regards,\n${formState.name}`;
+
+    const mailtoUrl = `mailto:Contact@klavestudio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Redirect user browser to native mail client to send email directly
+    window.location.href = mailtoUrl;
+
+    // Simulate completion animation delay
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -35,7 +44,7 @@ export default function Contact() {
         service: "Web Development",
         message: "",
       });
-    }, 1500);
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -105,7 +114,7 @@ export default function Contact() {
               {/* Email */}
               <a
                 ref={mailRef}
-                href="mailto:studio@klave.studio"
+                href="mailto:Contact@klavestudio.com"
                 className="flex items-center justify-between p-5 bg-white/[0.02] border border-white/5 rounded-2xl hover:border-brand-amber/25 hover:bg-white/[0.04] transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4">
@@ -114,7 +123,7 @@ export default function Contact() {
                   </span>
                   <div>
                     <h4 className="text-sm font-heading font-semibold text-white">Send an Email</h4>
-                    <p className="text-xs text-gray-500 font-sans mt-0.5">hello@klave.studio</p>
+                    <p className="text-xs text-gray-500 font-sans mt-0.5">Contact@klavestudio.com</p>
                   </div>
                 </div>
                 <span className="text-xs font-sans text-brand-amber uppercase tracking-wider font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">

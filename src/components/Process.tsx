@@ -89,10 +89,10 @@ export default function Process() {
         </div>
 
         {/* Process Roadmap List */}
-        <div className="relative max-w-4xl mx-auto pl-6 sm:pl-16">
+        <div className="relative max-w-4xl mx-auto pl-12 sm:pl-20">
           
           {/* Animated Connecting Vertical Line */}
-          <div className="absolute left-[29px] sm:left-[67px] top-4 bottom-4 w-[2px] bg-white/10">
+          <div className="absolute left-[23px] sm:left-[39px] top-4 bottom-4 w-[2px] bg-white/10">
             <motion.div
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
@@ -115,7 +115,7 @@ export default function Process() {
               >
                 
                 {/* Node Symbol */}
-                <div className="absolute -left-[37px] sm:-left-[79px] top-1.5 w-[24px] h-[24px] rounded-full bg-black border-2 border-white/20 group-hover:border-brand-amber flex items-center justify-center z-10 transition-colors duration-300">
+                <div className="absolute -left-[36px] sm:-left-[52px] top-1.5 w-[24px] h-[24px] rounded-full bg-black border-2 border-white/20 group-hover:border-brand-amber flex items-center justify-center z-10 transition-colors duration-300">
                   <div className="w-1.5 h-1.5 bg-white/40 group-hover:bg-brand-amber rounded-full transition-colors duration-300" />
                 </div>
 
