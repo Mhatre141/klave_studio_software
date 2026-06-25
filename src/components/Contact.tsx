@@ -66,14 +66,14 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-12 md:py-16 bg-brand-bg/85 backdrop-blur-md z-20 overflow-hidden border-t border-white/5">
-      
+
       {/* Background gradients */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-amber/5 rounded-full filter blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Left Column: Info & Actions */}
           <div className="lg:col-span-5">
             <span className="text-xs uppercase tracking-[0.25em] text-brand-amber font-sans font-semibold block mb-4">
@@ -88,7 +88,7 @@ export default function Contact() {
 
             {/* Quick Actions List */}
             <div className="flex flex-col gap-4">
-              
+
               {/* WhatsApp */}
               <a
                 ref={waRef}
@@ -163,7 +163,7 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               className="liquid-morphism border border-white/10 p-8 sm:p-10 rounded-3xl relative overflow-hidden"
             >
-              
+
               {isSubmitted ? (
                 <div className="text-center py-16 flex flex-col items-center justify-center">
                   <div className="w-16 h-16 bg-brand-amber/15 border border-brand-amber/35 text-brand-amber rounded-full flex items-center justify-center mb-6 animate-bounce">
@@ -188,7 +188,7 @@ export default function Contact() {
                         value={formState.name}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-white/5 border border-white/5 rounded-xl font-sans text-sm text-white focus:outline-none focus:border-brand-amber/40 focus:bg-white/[0.08] transition-all duration-300"
-                        placeholder="e.g. Ayush Mhatre"
+                        placeholder="e.g. Client Name"
                         suppressHydrationWarning
                       />
                     </div>

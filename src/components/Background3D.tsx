@@ -4,6 +4,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, useState, useEffect } from "react";
 import * as THREE from "three";
 
+// Suppress THREE.Clock deprecation warnings triggered by React Three Fiber v9 internals
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    if (
+      args[0] &&
+      typeof args[0] === "string" &&
+      args[0].includes("THREE.Clock")
+    ) {
+      return;
+    }
+    originalWarn(...args);
+  };
+}
+
 function Particles({ count = 150 }) {
   const points = useRef<THREE.Points>(null);
 

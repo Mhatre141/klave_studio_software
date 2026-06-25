@@ -20,7 +20,7 @@ export default function Hero() {
 
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeFrame, setActiveFrame] = useState(0);
+  const currentFrameIndexRef = useRef(0);
 
   const totalFrames = 100;
   const imageRefs = useRef<HTMLImageElement[]>([]);
@@ -95,11 +95,13 @@ export default function Hero() {
     if (!canvas) return;
 
     const handleResize = () => {
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
+      // Performance Optimization: limit DPR to 2x maximum on high-density Retina screens
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       canvas.style.width = "100%";
       canvas.style.height = "100%";
-      renderFrame(activeFrame);
+      renderFrame(currentFrameIndexRef.current);
     };
 
     window.addEventListener("resize", handleResize);
@@ -117,8 +119,14 @@ export default function Hero() {
         scrub: 0.25,
         onUpdate: (self) => {
           const frameIndex = Math.floor(scrollObj.frame);
-          setActiveFrame(frameIndex);
-          renderFrame(frameIndex);
+          
+          // Performance Optimization: 
+          // 1. Only call renderFrame if the frame index has changed (saves GPU drawing overhead)
+          // 2. Avoid React state updates to prevent component re-rendering on every scroll tick
+          if (frameIndex !== currentFrameIndexRef.current) {
+            currentFrameIndexRef.current = frameIndex;
+            renderFrame(frameIndex);
+          }
 
           // Parallax and fades for text layers
           const progress = self.progress;
